@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html style="border: 2px solid #30694B;">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet"> 
+  <script src="https://kit.fontawesome.com/8dce6f872c.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
+</head>
+<body>
+  <div id="popup" style="width: 500px; height: 330px">
+    <div id="homePage">
+      <h1 style="text-align: center; font-family: 'Oswald', cursive;">Renewable Streaming</h1>
+      <div>
+        <div style="display: inline;">
+          <h3 style="display: inline; font-family: 'Roboto Condensed'; font-weight: 700; margin-right: 10px;">Streaming Quality:</h3>
+          <div style="display: inline; justify-content: space-evenly;">
+            <h3 id="eco" style="display: inline; color: #358856; font-family: 'Oswald'; margin-right: 10px;">Eco</h3>
+            <h3 id="minimal" style="display: inline; color: #358856; font-family: 'Oswald'; margin-right: 10px;">Minimal</h3>
+            <h3 id="custom" style="display: inline; color: #358856; font-family: 'Oswald'; margin-right: 10px;">Custom</h3>
+          </div>
+          <div id="customQuality" style="display: flex; justify-content: space-evenly;">
+            <h4 id="setQuality144p" style="padding: 5px;">144p</h4>
+            <h4 id="setQuality240p" style="padding: 5px;">240p</h4>
+            <h4 id="setQuality360p" style="padding: 5px;">360p</h4>
+            <h4 id="setQuality480p" style="padding: 5px;">480p</h4>
+            <h4 id="setQuality720p" style="padding: 5px;">720p</h4>
+            <h4 id="setQuality1080p" style="padding: 5px;">1080p</h4>
+            <h4 id="setQuality1440p" style="padding: 5px;">1440p</h4>
+            <h4 id="setQuality4k" style="padding: 5px;">4k</h4>
+          </div>
+        </div>
+        <div>
+          <h3 style="display: inline; font-family: 'Roboto Condensed'; font-weight: 700; margin-right: 5px;">Total Time Spent Streaming: </h3>
+          <h3 id="totalTimeSpent" style="display: inline; font-family: 'Roboto Condensed'; font-weight: 700;  color: #358856;">100</h3>
+          <h3 style="display: inline; font-family: 'Roboto Condensed'; font-weight: 700; color: #358856;">hours.</h3>
+        </div>
+        <div>
+          <h3 style="display: inline; font-family: 'Roboto Condensed'; font-weight: 700; margin-right: 5px;">Total Data Saved: </h3>
+          <h3 id="totalEnergySaved" style="display: inline; font-family: 'Roboto Condensed'; font-weight: 700;  color: #358856;">100</h3>
+          <h3 id="mbs" style="display: inline; font-family: 'Roboto Condensed'; font-weight: 700; color: #358856;">MB's.</h3>
+          <h3 id="mbsExplained" style="display: inline; font-family: 'Roboto Condensed'; font-weight: 700;"></h3>
+        </div>
+        <div style="margin-top: 10px;">
+          <h3 style="display: inline; font-family: 'Roboto Condensed'; font-weight: 700; margin-right: 5px;">Total Energy Saved: </h3>
+          <h3 id="totalEnergySaved" style="display: inline; font-family: 'Roboto Condensed'; font-weight: 700; color: #358856;">100</h3>
+          <h3 id="gco2" style="display: inline; font-family: 'Roboto Condensed'; font-weight: 700; color: #358856;">grams of CO2.</h3>
+          <h3 id="gco2Explained" style="display: inline; font-family: 'Roboto Condensed'; font-weight: 700;"></h3>
+        </div>
+        <div id="fullBreakdown" style="margin-top: 10px;">
+          <h3 style="display: inline; font-family: 'Roboto Condensed'; font-weight: 700;">See a full breakdown of your Streaming Stats?</h3>
+          <i style="color: #121212; margin-left: 5px;" class="fa-solid fa-caret-down fa-xl"></i>   
+        </div>
+        <div id="fullBreakdownData" style="display: flex;">
+          <div style="width: 50%; display: inline;">
+            <div style="padding-top: 5px;">
+              <h3 style="display: inline; font-family: 'Oswald'">Your Streaming Stats: </h3>
+            </div>
+            <div style="padding-top: 5px">
+              <h3 style="display: inline; font-family: 'Roboto Condensed'">Your Screen Resolution: 
+                <h3 id="currentWidth" style="display: inline; font-family: 'Roboto Condensed'"></h3> 
+                <h3 style="display: inline; font-family: 'Roboto Condensed'">p</h3>
+                x 
+                <h3 id="currentHeight" style="display: inline; font-family: 'Roboto Condensed'"></h3>
+                <h3 style="display: inline; font-family: 'Roboto Condensed'">p</h3>
+              </h3>
+            </div>
+            <div style="padding-top: 5px;">
+              <h3 style="display: inline; font-family: 'Roboto Condensed'">Screen Quality: 
+                <h3 id="screenQuality" style="display: inline; font-family: 'Roboto Condensed'"></h3>
+                <h3 style="display: inline; font-family: 'Roboto Condensed'">p</h3>
+              </h3>
+            </div>
+            <div style="padding-top: 5px;">
+              <h3 style="display: inline; font-family: 'Roboto Condensed'">Your Screen Frame Rate: 
+                <h3 id="currentFrameRate" style="display: inline; font-family: 'Roboto Condensed'"></h3>
+                fps
+              </h3>
+            </div>
+          </div>
+          <div style="width: 50%; display: inline;">
+            <div style="padding-top: 5px;">
+              <h3 style="display: inline; font-family: 'Oswald'">Your Streaming Consumption watching </h3>
+              <h3 id="currentVideoName" style="display: inline; font-family: 'Oswald'"></h3>
+            </div>
+            <div style="padding-top: 5px;">
+              <h3 style="display: inline; font-family: 'Roboto Condensed'">MB's Saved Streaming: in
+                <h3 id="setQualityCurrentVideo" style="display: inline; font-family: 'Roboto Condensed'"></h3>
+                <h3 id="mbsTransferredSavedCurrentVideo" style="display: inline; font-family: 'Roboto Condensed'"></h3>
+                Mbs
+              </h3>
+            </div>
+            <div style="padding-top: 5px;">
+              <h3 style="display: inline; font-family: 'Roboto Condensed'">CO2 Saved Streaming: in
+                <h3 id="setQualityEnergyCurrentVideo" style="display: inline; font-family: 'Roboto Condensed'"></h3>
+                <h3 id="energySavedCurrentVideo" style="display: inline; font-family: 'Roboto Condensed'"></h3>
+                grams
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 20px;">
+          <h3 style="display: inline; font-family: 'Roboto Condensed'; font-weight: 700; margin-right: 5px;">This is equivalent to: </h3>
+        </div>
+        <div id="cars" style="margin-top: 10px;">     
+        </div>
+        <div id="burgers" style="margin-top: 20px;">           
+        </div>
+        <div id="trees" style="margin-top: 20px;">
+        </div>
+        <div id="badges" style="margin-top: 20px; display: inline;">
+          <div id="5kgSaved" style="display: inline; visibility: hidden;">
+            <svg height="40" width="40" style="margin-top: 10px;">
+              <g>
+                <circle cx="20" cy="20" r="15" stroke="#30694B" stroke-width="3" fill="white"></circle>
+                <text x="10" y="25" font-family="Oswald" font-size="15" fill="black">5kg</text>
+              </g>
+            </svg> 
+          </div> 
+          <div id="10kgSaved" style="display: inline; visibility: hidden">
+            <svg height="40" width="40" style="margin-top: 10px;">
+              <g>
+                <circle cx="20" cy="20" r="15" stroke="#30694B" stroke-width="3" fill="white"></circle>
+                <text x="9" y="25" font-family="Oswald" font-size="12" fill="black">10kg</text>
+              </g>
+            </svg> 
+          </div>
+          <div id="20kgSaved" style="display: inline; visibility: hidden">
+            <svg height="40" width="40" style="margin-top: 10px;">
+              <g>
+                <circle cx="20" cy="20" r="15" stroke="#30694B" stroke-width="3" fill="white"></circle>
+                <text x="9" y="25" font-family="Oswald" font-size="12" fill="black">20kg</text>
+              </g>
+            </svg> 
+          </div>
+          <div id="50kgSaved" style="display: inline; visibility: hidden">
+            <svg height="40" width="40" style="margin-top: 10px;">
+              <g>
+                <circle cx="20" cy="20" r="15" stroke="#30694B" stroke-width="3" fill="white"></circle>
+                <text x="9" y="25" font-family="Oswald" font-size="12" fill="black">50kg</text>
+              </g>
+            </svg> 
+          </div>
+        </div>
+        <!-- <div>
+          <h3 style="display: inline; font-family: 'Oswald'">Your Streaming Stats: </h3>
+        </div>
+        <div style="padding-top: 5px">
+          <h3 style="display: inline; font-family: 'Roboto Condensed'">Your Screen Resolution: 
+            <h3 id="currentWidth" style="display: inline; font-family: 'Roboto Condensed'"></h3> 
+            <h3 style="display: inline; font-family: 'Roboto Condensed'">p</h3>
+            x 
+            <h3 id="currentHeight" style="display: inline; font-family: 'Roboto Condensed'"></h3>
+            <h3 style="display: inline; font-family: 'Roboto Condensed'">p</h3>
+          </h3>
+        </div>
+        <div style="padding-top: 5px;">
+          <h3 style="display: inline; font-family: 'Roboto Condensed'">Screen Quality: 
+            <h3 id="screenQuality" style="display: inline; font-family: 'Roboto Condensed'"></h3>
+            <h3 style="display: inline; font-family: 'Roboto Condensed'">p</h3>
+          </h3>
+        </div>
+        <div style="padding-top: 5px;">
+          <h3 style="display: inline; font-family: 'Roboto Condensed'">Your Screen Frame Rate: 
+            <h3 id="currentFrameRate" style="display: inline; font-family: 'Roboto Condensed'"></h3>
+            fps
+          </h3>
+        </div>
+        <div style="padding-top: 5px;">
+          <h3 style="display: inline; font-family: 'Oswald'">Your Streaming Consumption watching </h3>
+          <h3 id="currentVideoName" style="display: inline; font-family: 'Oswald'"></h3>
+        </div>
+        <div style="padding-top: 5px;">
+          <h3 style="display: inline; font-family: 'Roboto Condensed'">MB's Saved Streaming: in
+            <h3 id="setQualityCurrentVideo" style="display: inline; font-family: 'Roboto Condensed'"></h3>
+            <h3 id="mbsTransferredSavedCurrentVideo" style="display: inline; font-family: 'Roboto Condensed'"></h3>
+            Mbs
+          </h3>
+        </div>
+        <div style="padding-top: 5px;">
+          <h3 style="display: inline; font-family: 'Roboto Condensed'">CO2 Saved Streaming: in
+            <h3 id="setQualityEnergyCurrentVideo" style="display: inline; font-family: 'Roboto Condensed'"></h3>
+            <h3 id="energySavedCurrentVideo" style="display: inline; font-family: 'Roboto Condensed'"></h3>
+            grams
+          </h3>
+        </div>
+        <div style="padding-top: 5px;">
+          <h3 style="display: inline; font-family: 'Oswald'">This is equivalent to planting </h3>
+          <h3 id="treeNumber" style="display: inline; font-family: 'Oswald'"></h3>
+          <h3 id="treeNumber" style="display: inline; font-family: 'Oswald'">Trees!</h3>
+        </div>
+        <div style="display: flex; justify-content: space-evenly; padding-top: 5px;">
+          <div id="treeCurrent1" style="padding-right: 5px; padding-left: 5px;">
+            <img style="height: 45px;" src="./Media/tree.png"/>
+          </div>
+          <div id="treeCurrent2" style="padding-right: 5px; padding-left: 5px;">
+            <img style="height: 45px;" src="./Media/tree.png"/>
+          </div>
+          <div id="treeCurrent3" style="padding-right: 5px; padding-left: 5px;">
+            <img style="height: 45px;" src="./Media/tree.png"/>
+          </div>
+          <div id="treeCurrent4" style="padding-right: 5px; padding-left: 5px;">
+            <img style="height: 45px;" src="./Media/tree.png"/>
+          </div>
+          <div id="treeCurrent5" style="padding-right: 5px; padding-left: 5px;">
+            <img style="height: 45px;" src="./Media/tree.png"/>
+          </div>
+          <div id="treeCurrent6" style="padding-right: 5px; padding-left: 5px;">
+            <img style="height: 45px;" src="./Media/tree.png"/>
+          </div>
+          <div id="treeCurrent7" style="padding-right: 5px; padding-left: 5px;">
+            <img style="height: 45px;" src="./Media/tree.png"/>
+          </div>
+          <div id="treeCurrent8" style="padding-right: 5px; padding-left: 5px;">
+            <img style="height: 45px;" src="./Media/tree.png"/>
+          </div>
+          <div id="treeCurrent9" style="padding-right: 5px; padding-left: 5px;">
+            <img style="height: 45px;" src="./Media/tree.png"/>
+          </div>
+          <div id="treeCurrent10" style="padding-right: 5px; padding-left: 5px;">
+            <img style="height: 45px;" src="./Media/tree.png"/>
+          </div>
+        </div>
+        <div style="padding-top: 10px;">
+          <h3 style="display: inline; font-family: 'Oswald'">Your Total Streaming Consumption: </h3>
+        </div>
+        <div style="padding-top: 5px;">
+          <h3 style="display: inline; font-family: 'Roboto Condensed'">Total MB's saved: 
+            <h3 id="totalDataSaved" style="display: inline; font-family: 'Roboto Condensed'"></h3>
+            Mbs
+          </h3>
+        </div>
+        <div style="padding-top: 5px;">
+          <h3 style="display: inline; font-family: 'Roboto Condensed'">Total CO2 Saved Streaming: 
+            <h3 id="totalEnergySaved" style="display: inline; font-family: 'Roboto Condensed'"></h3>
+            grams
+          </h3>
+        </div>
+        <div style="padding-top: 5px;">
+          <h3 style="display: inline; font-family: 'Oswald'">This is equivalent to planting 9 Trees!</h3>
+        </div>
+        <div style="display: flex; justify-content: space-evenly; padding-top: 5px;">
+          <div style="padding-right: 5px; padding-left: 5px;">
+            <img style="height: 45px;" src="./Media/tree.png"/>
+          </div>
+          <div style="padding-right: 5px; padding-left: 5px;">
+            <img style="height: 45px;" src="./Media/tree.png"/>
+          </div>
+          <div style="padding-right: 5px; padding-left: 5px;">
+            <img style="height: 45px;" src="./Media/tree.png"/>
+          </div>
+          <div style="padding-right: 5px; padding-left: 5px;">
+            <img style="height: 45px;" src="./Media/tree.png"/>
+          </div>
+          <div style="padding-right: 5px; padding-left: 5px;">
+            <img style="height: 45px;" src="./Media/tree.png"/>
+          </div>
+          <div style="padding-right: 5px; padding-left: 5px;">
+            <img style="height: 45px;" src="./Media/tree.png"/>
+          </div>
+          <div style="padding-right: 5px; padding-left: 5px;">
+            <img style="height: 45px;" src="./Media/tree.png"/>
+          </div>
+          <div style="padding-right: 5px; padding-left: 5px;">
+            <img style="height: 45px;" src="./Media/tree.png"/>
+          </div>
+          <div style="padding-right: 5px; padding-left: 5px;">
+            <img style="height: 45px;" src="./Media/tree.png"/>
+          </div>
+        </div>
+        <div style="padding-top: 10px;">
+          <h3 style="display: inline; font-family: 'Roboto Condensed'">Our mission is to help educate you about your streaming footprint. Click below to find out more about us and how you can further help your streaming footprint.</h3>
+        </div>
+        <div style="display: flex; justify-content: center;">
+          <h3 id="discoverMore" style="display: inline;font-family: 'Roboto Condensed';padding: 5px;border-radius: 5px;border: 1px solid green;">Discover More</h3>
+        </div>  -->
+      </div> 
+    </div>
+    <div id="usagePage">
+      <h1 style="text-align: center; font-family: 'Oswald', cursive; margin-top: 0px;">Usage Statistics</h1>
+      <div>
+        <canvas id="chart"></canvas>
+      </div>
+      <div style="text-align: center;">
+        <h4 id="comparisonText"></h4>
+      </div>
+      <div>
+        <h3 style="font-family: 'Oswald', cursive;">Device: </h3>
+        <div style="display: flex; justify-content: space-evenly; margin-top: -50px; margin-left: 40px;">
+          <p id="smartphone" style="padding: 5px;">Smartphone</p>
+          <p id="tablet" style="padding: 5px;">Tablet</p>
+          <p id="laptop" style="padding: 5px;">Laptop</p>
+          <p id="television" style="padding: 5px;">Television (50" LED)</p>
+        </div>
+      </div>
+      <div style="margin-top: -20px;">
+        <h3 style="font-family: 'Oswald', cursive;">Bitrate: </h3>
+        <div style="display: flex; justify-content: space-evenly; margin-top: -50px; margin-left: 40px;">
+          <p id="low" style="padding: 5px;">Low (Mobile default)</p>
+          <p id="sd" style="padding: 5px;">SD</p>
+          <p id="hd" style="padding: 5px;">HD</p>
+          <p id="4k" style="padding: 5px;">UHD/4k</p>
+        </div>
+      </div>
+      <div style="margin-top: -20px;">
+        <h3 style="font-family: 'Oswald', cursive;">Network Type: </h3>
+        <div style="display: flex; justify-content: space-evenly; margin-top: -50px; margin-left: 40px;">
+          <p id="wifi" style="padding: 5px;">Wifi</p>
+          <p id="4g" style="padding: 5px;">4G</p>
+        </div>
+      </div>
+    </div>
+    <div id="informationPage">
+      <h1 style="text-align: center; font-family: 'Oswald', cursive; margin-top: 0px;">Our Mission and Research</h1>
+      <div>
+        <h3 style="font-family: 'Oswald'; margin-top: -10px;">Our Mission</h3>
+        <div style="display: flex; margin-top: -5px;">
+          <img style="border-radius: 5px; margin-right: 10px;" width="135px" height="100px" src="Media/mission.png"/>
+          <p style="font-family: 'Roboto Condensed'; margin-top: 2px;">
+            Eco Streaming empowers users to understand the environmental impact of their online streaming activity.<br/>
+            By reducing your own carbon footprint through streaming, you can better understand the impact that video streaming services have on the environment and reduce your carbon output. We also encourage you to sign our petitions, holding companies like Amazon and Netflix responsible for reducing their own environmental impact.</p>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-family: 'Oswald'; margin-top: 0px;">Research</h3>
+        <div style="display: inline;">
+          <p style="font-family: 'Roboto Condensed'; text-align: 'justify'; margin-top: -5px;">Dr Chris Priest's work adopts a bottom-up approach in evaluating the Life-Cycle Assesment (LCA) of various online services. His work in the University of Bristol has had a profound impact in better monitoring and improving the sustainable design of these digital serivices. Below is a link to his work with modeling the CO2 emissions of the music industry on YouTube and proposals on how to improve it as well as a link to his paper on Evaluating Sustainable Interaction Design of Digital Services: The Case of YouTube (Chris Priest/ Dan Schien).</p>
+        </div>
+        <div style="justify-content: space-evenly; display: flex; margin-top: 5px;">
+          <a style="text-decoration: none; color: #121212;" href="https://www.iea.org/commentaries/the-carbon-footprint-of-streaming-video-fact-checking-the-headlines" target="_blank"><p style="font-family: 'Oswald';border-radius: 15px;padding: 5px;color: #f8f8ff;background-color: #358856;margin-top: 0px;">Modelling of CO2 Emissions</p></a>
+          <a style="text-decoration: none; color: #121212;" href="https://dl.acm.org/doi/abs/10.1145/3290605.3300627" target="_blank"><p style="font-family: 'Oswald';border-radius: 15px;padding: 5px;color: #f8f8ff;background-color: #358856;margin-top: 0px;">Chris Preist Academic Paper</p></a>
+        </div>
+      </div>
+    </div>
+    <div id="heartPage">
+      <h1 style="text-align: center; font-family: 'Oswald', cursive; margin-top: 0px;">Get Involved</h1>
+      <p>If you want to help us pressure big companies to disclose their carbon emissions, you can sign the Change.org petitions below.</p>
+      <div style="text-align: center; display: flex; justify-content: center;">
+        <a style="text-decoration: none; color: #121212;" href="https://chng.it/ntj2Db9x" target="_blank"><p style="width: 100px;font-family: 'Oswald';border-radius: 15px;padding: 5px;color: #f8f8ff;background-color: #358856;margin-top: 0px;">Netflix</p></a>
+      </div>
+      <div style="text-align: center; display: flex; justify-content: center;">
+        <a style="text-decoration: none; color: #121212;" href="https://chng.it/xS22Z9Tp" target="_blank"><p style="width: 100px;font-family: 'Oswald';border-radius: 15px;padding: 5px;color: #f8f8ff;background-color: #358856;margin-top: 0px;">Amazon Prime</p></a>
+      </div>
+      <div style="text-align: center; display: flex; justify-content: center;">
+        <a style="text-decoration: none; color: #121212;" href="https://chng.it/W5cxsyRF" target="_blank"><p style="width: 100px;font-family: 'Oswald';border-radius: 15px;padding: 5px;color: #f8f8ff;background-color: #358856;margin-top: 0px;">Disney Plus</p></a>
+      </div>
+      <p>If you want to help us refine and build our extension, find our open source code on our GitHub.</p>
+      <div style="text-align: center; display: flex; justify-content: center;">
+        <a style="text-decoration: none; color: #121212;" href="https://www.iea.org/commentaries/the-carbon-footprint-of-streaming-video-fact-checking-the-headlines" target="_blank"><p style="width: 150px;font-family: 'Oswald';border-radius: 15px;padding: 5px;color: #f8f8ff;background-color: #358856;margin-top: 0px;">Eco Streaming GitHub</p></a>
+      </div>
+    </div>
+    <div style="background-color: #30694B; margin-left: -10px; position:absolute; bottom:0; width:100%; height:42px; text-align: center;">
+      <i id="home" style="color: #f8f8ff;margin-top: 18px;margin-left: 50px;margin-right: 50px;padding-bottom: 15px;" class="fa-solid fa-house fa-2xl"></i>
+      <i id="usage" style="color: #f8f8ff;margin-top: 18px;margin-left: 50px;margin-right: 50px;padding-bottom: 15px;" class="fa-solid fa-chart-simple fa-2xl"></i>
+      <i id="information" style="color: #f8f8ff;margin-top: 18px;margin-left: 50px;margin-right: 50px;padding-bottom: 15px;" class="fa-solid fa-question fa-2xl"></i>
+      <i id="heart" style="color: #f8f8ff;margin-top: 18px;margin-left: 50px;margin-right: 50px;padding-bottom: 15px;" class="fa-solid fa-heart fa-2xl"></i>
+    </div>
+  </div>
+  <!-- <div id="moreInfomation" style="width: 500px; height: 600px; border-radius: 5px;">
+    <div id="back" style="display: flex; margin-top: 5px; margin-bottom: -20px;">
+      <img id="back" style="height: 15px; display: inline" src="Media/arrow.png" />
+      <h4 id="back" style="font-family: 'Oswald';margin-top: -2px; margin-left: 5px;">Back to your Usage Stats</h4>
+    </div>
+    <h1 style="text-align: center; font-family: 'Oswald', cursive;">Renewable Streaming</h1>
+    <div style="display: flex; justify-content: space-evenly;">
+      <div>
+        <h3 style="font-family: 'Oswald'; text-align: center;">Our Mission</h3>
+        <img style="height: 80px; border-radius: 5px;" src="Media/mission.jpg" />
+        <p style="font-family: 'Roboto Condensed'; max-width: 150px; text-align: justify; justify-content: center; font-weight: 500;">Our mission is to make our users more environemtally aware about their streaming footprint. We understand that whilst reducing streamed quality on the users device is a very small part of the overall energy cost of streaming, it however allows us to engage with environemntally conscious users like yourself to help educate and inform regarding your streaming footprint.</p>
+      </div>
+      <div>
+        <h3 style="font-family: 'Oswald'; text-align: center;">Our Technology</h3>
+        <img style="height: 80px;border-radius: 5px;display: block;margin-left: auto;margin-right: auto;" src="Media/technology.jpeg" />
+        <p style="font-family: 'Roboto Condensed'; max-width: 150px; text-align: justify; justify-content: center; font-weight: 500;">Our technology works by getting the quality streamed from a service, and automatically chnaging it do your set quality. We record both of these streaming qualities and plug these into our algoirthm which calcluates how many Mbs of data transferred you have saved by reducing the quality, and the energy saving of this. We use palm trees to help viually convey the energy saved.</p>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: space-evenly;">
+      <div>
+        <h3 style="font-family: 'Oswald'; text-align: center;">How can I get involved?</h3>
+        <img style="height: 80px; border-radius: 5px;" src="Media/community.jpg" />
+        <p style="font-family: 'Roboto Condensed'; max-width: 150px; text-align: justify; justify-content: center; font-weight: 500;">There are a few ways in which you can get involved!</p>
+        <p style="font-family: 'Roboto Condensed'; max-width: 150px; text-align: justify; justify-content: center; font-weight: 500;">You can share our extension with your family and friends, helping to educate and inform them on their streaming footprint.</p>
+        <p style="font-family: 'Roboto Condensed'; max-width: 150px; text-align: justify; justify-content: center; font-weight: 500;">If you are interested in the code side of our project, you can also get in touch with us to help improve the extension and awareness tool.</p>
+        <p style="font-family: 'Roboto Condensed'; max-width: 150px; text-align: justify; justify-content: center; font-weight: 500;">You can also get invloved and help us by reading these articles regarding the environemntal coosts of internet streaming and signing the following partitions, to add further legislation to streaming platforms to account for their in-direct streaming costs.</p>
+
+
+
+      </div>
+      <div>
+        <h3 style="font-family: 'Oswald'; text-align: center;">Usage Stats</h3>
+        <img style="height: 80px; border-radius: 5px;display: block;margin-left: auto;margin-right: auto;" src="Media/graph.png" />
+        <p style="font-family: 'Roboto Condensed'; max-width: 150px; text-align: justify; justify-content: center; font-weight: 500;">Explore the graph below to see how streaming quality and device effects the amount of energy used to stream.</p>
+      </div>
+    </div>
+  </div> -->
+<script src="popup.js"></script>
+</body>
+</html>

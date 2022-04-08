@@ -1,0 +1,26 @@
+{
+    "manifest_version": 2,
+    "name": "Eco Streaming",
+    "description": "Testing Plugin",
+    "version": "1.0",
+    "content_scripts":[
+      {
+        "matches":[
+          "https://www.youtube.com/watch*"
+        ],
+        "js": ["content.js"]
+      }
+    ],"browser_action": {
+      "default_icon": "./Media/Eco_Streaming_Logo.png",
+      "default_popup": "popup.html"
+    },"background": {
+        "scripts": ["background.js"],
+        "persistent": false
+      },"permissions": [
+      "activeTab",
+      "storage",
+      "https://ajax.googleapis.com/",
+      "tabs"
+    ],
+    "content_security_policy": "script-src 'self' https://cdn.jsdelivr.net/npm/chart.js@3.7.1 https://kit.fontawesome.com/8dce6f872c.js object-src 'self'"
+}
