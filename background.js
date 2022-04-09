@@ -1,7 +1,7 @@
 var totalDataSaved = 0
 var totalEnergySaved = 0
 var setQuality = "720p"
-var totalTime = 1000000
+var totalTime = 0
 
 chrome.tabs.onUpdated.addListener(
     function(tabId, changeInfo, tab) {

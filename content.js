@@ -9,6 +9,8 @@ var currentVideoEnergySaved = 0
 var currentVideoName = ""
 var frameRate = 60
 var totalTime = 0
+var emissionAddition = 0
+var emissionAdditionEnergy = 0
 
 chrome.runtime.onMessage.addListener((msg, sender, response) => {
   if((msg.from === 'popup') && (msg.subject === 'url')) {
@@ -19,6 +21,9 @@ chrome.runtime.onMessage.addListener((msg, sender, response) => {
       currentVideoEnergySaved: currentVideoEnergySaved,
       currentVideoName: currentVideoName,
       setQuality: setQuality,
+      totalTime: totalTime,
+      emissionAddition: emissionAddition,
+      emissionAdditionEnergy: emissionAdditionEnergy
     }
     response(info)
   }
@@ -62,9 +67,11 @@ async function updateDetails(){
     var currentVideoEnergyAfter = getCurrentVideoEnergySaved(setQuality)
     var currentVideoEnergyBefore = getCurrentVideoEnergySaved(qualityBefore)
     currentVideoEnergySaved = Math.round(currentVideoEnergyBefore - currentVideoEnergyAfter)
+    emissionAddition = currentVideoDataSaved / Number(getVideoDuration())
+    emissionAdditionEnergy = currentVideoEnergySaved / Number(getVideoDuration())
     if(currentVideoEnergySaved < 0) currentVideoEnergySaved = 0
     if(currentVideoEnergySaved > 0) totalEnergySaved = totalEnergySaved + currentVideoEnergySaved
-    totalTime = totalTime + getVideoDuration()
+    totalTime = totalTime + Number(getVideoDuration())
     chrome.runtime.sendMessage({
       from: "content",
       message: "updated data",
@@ -117,19 +124,24 @@ function getCurrentVideoDataSaved(videoQuality, videoFrameRate){
       MBsTransferred = 0
   }
 
-  return Math.round(MBsTransferred)
+  var powerUsage = 88000 / 365.25 / 8 / 60 / 60 //https://www.energuide.be/en/questions-answers/how-much-power-does-a-computer-use-and-how-much-co2-does-that-represent/54/
+  var powerUsageForVideo = powerUsage * videoDuration
+  var totalUsage = powerUsageForVideo + MBsTransferred
+
+  return Math.round(totalUsage)
 }
 
 function getVideoDuration(){
   var videoDuration = document.getElementsByClassName('ytp-time-duration')[0].innerHTML
   videoDuration = videoDuration.split(':')
-  var videoFullLength = videoDuration[0] * 60 + videoDuration[1]
+  var videoFullLength = Number(videoDuration[0]) * 60
+  videoFullLength = Number(videoFullLength) + Number(videoDuration[1])
   return videoFullLength
 }
 
 function getCurrentVideoEnergySaved(quality){
   var videoDuration = getVideoDuration()
-  var energyMultiplier = 400 * 0.1 / 60 / 60 //seconds
+  var energyMultiplier = 400 * 0.1 / 60 / 60
 
   var energySaved = 0
   if(quality === "144p"){
