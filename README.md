@@ -1,7 +1,7 @@
 # Eco-Streaming
 Eco Streaming empowers users to understand the environmental impact of their online streaming activity.
 
-ng services have on the environment and reduce your carbon output. We also encourage you to sign our petitions, holding companies like Amazon and Netflix responsible for reducing their own environmental impact.
+By reducing your own carbon footprint through streaming, you can better understand the impact that video streaming services have on the environment and reduce your carbon output. We also encourage you to sign our petitions, holding companies like Amazon and Netflix responsible for reducing their own environmental impact.
 
 ## Get Involved 
 If you want to help us pressure big companies to disclose their carbon emissions, you can sign the Change.org petitions below.
