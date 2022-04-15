@@ -56,8 +56,11 @@ document.getElementById('eco').addEventListener("click", function(){
     document.getElementById('setQuality360p').style.borderBottom = 'transparent'
     document.getElementById('setQuality480p').style.borderBottom = 'transparent'
     document.getElementById('setQuality1080p').style.borderBottom = 'transparent'
-    document.getElementById('joinCommunity').style.visibility = "visible"
-      document.getElementById('joinCommunity').style.height = "auto"
+    if(document.getElementById('fullBreakdownData').style.visibility == 'visible'){
+        document.getElementById('popup').style.height = "450px"
+    }else{
+        document.getElementById('popup').style.height = "350px"
+    }
     chrome.tabs.query({
         active: true,
         currentWindow: true
@@ -84,8 +87,11 @@ document.getElementById('minimal').addEventListener("click", function(){
     document.getElementById('setQuality480p').style.borderBottom = 'transparent'
     document.getElementById('setQuality720p').style.borderBottom = 'transparent'
     document.getElementById('setQuality1080p').style.borderBottom = 'transparent'
-    document.getElementById('joinCommunity').style.visibility = "visible"
-    document.getElementById('joinCommunity').style.height = "auto"
+    if(document.getElementById('fullBreakdownData').style.visibility == 'visible'){
+        document.getElementById('popup').style.height = "450px"
+    }else{
+        document.getElementById('popup').style.height = "350px"
+    }
     chrome.tabs.query({
         active: true,
         currentWindow: true
@@ -100,8 +106,13 @@ document.getElementById('minimal').addEventListener("click", function(){
 
 document.getElementById('custom').addEventListener("click", function(){
     qualitySet = "720p"
-    document.getElementById('customQuality').style.height = 'auto'
     document.getElementById('customQuality').style.visibility = "visible"
+    if(document.getElementById('fullBreakdownData').style.visibility == 'visible'){
+        document.getElementById('popup').style.height = "470px"
+    }else{
+        document.getElementById('popup').style.height = "380px"
+    }
+    document.getElementById('customQuality').style.height = 'auto'
     document.getElementById('eco').style.borderBottom = 'transparent'
     document.getElementById('minimal').style.borderBottom = 'transparent'
     document.getElementById('custom').style.borderBottom = '3px solid #30694B'
@@ -111,8 +122,6 @@ document.getElementById('custom').addEventListener("click", function(){
     document.getElementById('setQuality360p').style.borderBottom = 'transparent'
     document.getElementById('setQuality480p').style.borderBottom = 'transparent'
     document.getElementById('setQuality1080p').style.borderBottom = 'transparent'
-    document.getElementById('joinCommunity').style.visibility = "hidden"
-    document.getElementById('joinCommunity').style.height = "0px"
     chrome.tabs.query({
         active: true,
         currentWindow: true
@@ -181,42 +190,42 @@ const setInfo = info => {
     }, 1000)
     setUpGraph()
     if(qualitySet == "144p"){
-        document.getElementById('setQuality144p').style.borderBottom = '3px solid green'
+        document.getElementById('setQuality144p').style.borderBottom = '3px solid #30694B'
         document.getElementById('eco').style.borderBottom = 'transparent'
         document.getElementById('minimal').style.borderBottom = '3px solid #30694B'
         document.getElementById('custom').style.borderBottom = 'transparent'
     }else if(qualitySet == "240p"){
-        document.getElementById('setQuality240p').style.borderBottom = '3px solid green'
+        document.getElementById('setQuality240p').style.borderBottom = '3px solid #30694B'
         document.getElementById('eco').style.borderBottom = 'transparent'
         document.getElementById('minimal').style.borderBottom = 'transparent'
         document.getElementById('custom').style.borderBottom = '3px solid #30694B'
     }else if(qualitySet == "360p"){
-        document.getElementById('setQuality360p').style.borderBottom = '3px solid green'
+        document.getElementById('setQuality360p').style.borderBottom = '3px solid #30694B'
         document.getElementById('eco').style.borderBottom = 'transparent'
         document.getElementById('minimal').style.borderBottom = 'transparent'
         document.getElementById('custom').style.borderBottom = '3px solid #30694B'
     }else if(qualitySet == "480p"){
-        document.getElementById('setQuality480p').style.borderBottom = '3px solid green'
+        document.getElementById('setQuality480p').style.borderBottom = '3px solid #30694B'
         document.getElementById('eco').style.borderBottom = 'transparent'
         document.getElementById('minimal').style.borderBottom = 'transparent'
         document.getElementById('custom').style.borderBottom = '3px solid #30694B'
     }else if(qualitySet == "720p"){
-        document.getElementById('setQuality720p').style.borderBottom = '3px solid green'
+        document.getElementById('setQuality720p').style.borderBottom = '3px solid #30694B'
         document.getElementById('eco').style.borderBottom = '3px solid #30694B'
         document.getElementById('minimal').style.borderBottom = 'transparent'
         document.getElementById('custom').style.borderBottom = 'transparent'
     }else if(qualitySet == "1080p"){
-        document.getElementById('setQuality1080p').style.borderBottom = '3px solid green'
+        document.getElementById('setQuality1080p').style.borderBottom = '3px solid #30694B'
         document.getElementById('eco').style.borderBottom = 'transparent'
         document.getElementById('minimal').style.borderBottom = 'transparent'
         document.getElementById('custom').style.borderBottom = '3px solid #30694B'
     }else if(qualitySet == "1440p"){
-        document.getElementById('setQuality1440p').style.borderBottom = '3px solid green'
+        document.getElementById('setQuality1440p').style.borderBottom = '3px solid #30694B'
         document.getElementById('eco').style.borderBottom = 'transparent'
         document.getElementById('minimal').style.borderBottom = 'transparent'
         document.getElementById('custom').style.borderBottom = '3px solid #30694B'
     }else if(qualitySet == "4k"){
-        document.getElementById('setQuality4k').style.borderBottom = '3px solid green'
+        document.getElementById('setQuality4k').style.borderBottom = '3px solid #30694B'
         document.getElementById('eco').style.borderBottom = 'transparent'
         document.getElementById('minimal').style.borderBottom = 'transparent'
         document.getElementById('custom').style.borderBottom = '3px solid #30694B'
@@ -287,27 +296,27 @@ document.getElementById('currentFrameRate').textContent = 60
 const setQualityInfo = qualityInfo => {
     qualitySet = qualityInfo.setQuality
     if(qualitySet == "144p"){
-        document.getElementById('setQuality144p').style.borderBottom = '3px solid green'
+        document.getElementById('setQuality144p').style.borderBottom = '3px solid #30694B'
     }else if(qualitySet == "240p"){
-        document.getElementById('setQuality240p').style.borderBottom = '3px solid green'
+        document.getElementById('setQuality240p').style.borderBottom = '3px solid #30694B'
     }else if(qualitySet == "360p"){
-        document.getElementById('setQuality360p').style.borderBottom = '3px solid green'
+        document.getElementById('setQuality360p').style.borderBottom = '3px solid #30694B'
     }else if(qualitySet == "480p"){
-        document.getElementById('setQuality480p').style.borderBottom = '3px solid green'
+        document.getElementById('setQuality480p').style.borderBottom = '3px solid #30694B'
     }else if(qualitySet == "720p"){
-        document.getElementById('setQuality720p').style.borderBottom = '3px solid green'
+        document.getElementById('setQuality720p').style.borderBottom = '3px solid #30694B'
     }else if(qualitySet == "1080p"){
-        document.getElementById('setQuality1080p').style.borderBottom = '3px solid green'
+        document.getElementById('setQuality1080p').style.borderBottom = '3px solid #30694B'
     }else if(qualitySet == "14p40"){
-        document.getElementById('setQuality1440p').style.borderBottom = '3px solid green'
+        document.getElementById('setQuality1440p').style.borderBottom = '3px solid #30694B'
     }else if(qualitySet == "4k"){
-        document.getElementById('setQuality4k').style.borderBottom = '3px solid green'
+        document.getElementById('setQuality4k').style.borderBottom = '3px solid #30694B'
     }
 };
 
 document.getElementById('setQuality144p').addEventListener("click", function(){
     qualitySet = "144p"
-    document.getElementById('setQuality144p').style.borderBottom = '3px solid green'
+    document.getElementById('setQuality144p').style.borderBottom = '3px solid #30694B'
     document.getElementById('setQuality240p').style.borderBottom = 'transparent'
     document.getElementById('setQuality360p').style.borderBottom = 'transparent'
     document.getElementById('setQuality480p').style.borderBottom = 'transparent'
@@ -329,7 +338,7 @@ document.getElementById('setQuality144p').addEventListener("click", function(){
 
 document.getElementById('setQuality240p').addEventListener("click", function(){
     qualitySet = "240p"
-    document.getElementById('setQuality240p').style.borderBottom = '3px solid green'
+    document.getElementById('setQuality240p').style.borderBottom = '3px solid #30694B'
     document.getElementById('setQuality144p').style.borderBottom = 'transparent'
     document.getElementById('setQuality360p').style.borderBottom = 'transparent'
     document.getElementById('setQuality480p').style.borderBottom = 'transparent'
@@ -351,7 +360,7 @@ document.getElementById('setQuality240p').addEventListener("click", function(){
 
 document.getElementById('setQuality360p').addEventListener("click", function(){
     qualitySet = "360p"
-    document.getElementById('setQuality360p').style.borderBottom = '3px solid green'
+    document.getElementById('setQuality360p').style.borderBottom = '3px solid #30694B'
     document.getElementById('setQuality144p').style.borderBottom = 'transparent'
     document.getElementById('setQuality240p').style.borderBottom = 'transparent'
     document.getElementById('setQuality480p').style.borderBottom = 'transparent'
@@ -373,7 +382,7 @@ document.getElementById('setQuality360p').addEventListener("click", function(){
 
 document.getElementById('setQuality480p').addEventListener("click", function(){
     qualitySet = "480p"
-    document.getElementById('setQuality480p').style.borderBottom = '3px solid green'
+    document.getElementById('setQuality480p').style.borderBottom = '3px solid #30694B'
     document.getElementById('setQuality144p').style.borderBottom = 'transparent'
     document.getElementById('setQuality240p').style.borderBottom = 'transparent'
     document.getElementById('setQuality360p').style.borderBottom = 'transparent'
@@ -395,7 +404,7 @@ document.getElementById('setQuality480p').addEventListener("click", function(){
 
 document.getElementById('setQuality720p').addEventListener("click", function(){
     qualitySet = "720p"
-    document.getElementById('setQuality720p').style.borderBottom = '3px solid green'
+    document.getElementById('setQuality720p').style.borderBottom = '3px solid #30694B'
     document.getElementById('setQuality144p').style.borderBottom = 'transparent'
     document.getElementById('setQuality240p').style.borderBottom = 'transparent'
     document.getElementById('setQuality360p').style.borderBottom = 'transparent'
@@ -417,7 +426,7 @@ document.getElementById('setQuality720p').addEventListener("click", function(){
 
 document.getElementById('setQuality1080p').addEventListener("click", function(){
     qualitySet = "1080p"
-    document.getElementById('setQuality1080p').style.borderBottom = '3px solid green'
+    document.getElementById('setQuality1080p').style.borderBottom = '3px solid #30694B'
     document.getElementById('setQuality144p').style.borderBottom = 'transparent'
     document.getElementById('setQuality240p').style.borderBottom = 'transparent'
     document.getElementById('setQuality360p').style.borderBottom = 'transparent'
@@ -439,7 +448,7 @@ document.getElementById('setQuality1080p').addEventListener("click", function(){
 
 document.getElementById('setQuality1440p').addEventListener("click", function(){
     qualitySet = "1440p"
-    document.getElementById('setQuality1440p').style.borderBottom = '3px solid green'
+    document.getElementById('setQuality1440p').style.borderBottom = '3px solid #30694B'
     document.getElementById('setQuality144p').style.borderBottom = 'transparent'
     document.getElementById('setQuality240p').style.borderBottom = 'transparent'
     document.getElementById('setQuality360p').style.borderBottom = 'transparent'
@@ -461,7 +470,7 @@ document.getElementById('setQuality1440p').addEventListener("click", function(){
 
 document.getElementById('setQuality4k').addEventListener("click", function(){
     qualitySet = "4k"
-    document.getElementById('setQuality4k').style.borderBottom = '3px solid green'
+    document.getElementById('setQuality4k').style.borderBottom = '3px solid #30694B'
     document.getElementById('setQuality144p').style.borderBottom = 'transparent'
     document.getElementById('setQuality240p').style.borderBottom = 'transparent'
     document.getElementById('setQuality360p').style.borderBottom = 'transparent'
@@ -485,17 +494,21 @@ document.getElementById('setQuality4k').addEventListener("click", function(){
 document.getElementById('fullBreakdown').addEventListener("click", function(){
     if(document.getElementById('fullBreakdownData').style.visibility == 'hidden'){
       document.getElementById('fullBreakdownData').style.visibility = 'visible' 
-      document.getElementById('popup').style.height = "auto" 
-      document.getElementById('fullBreakdownData').style.height = 'auto'
-      document.getElementById('joinCommunity').style.visibility = "hidden"
-      document.getElementById('joinCommunity').style.height = "0px"
+      if(document.getElementById('custom').style.borderBottom == '3px solid rgb(48, 105, 75)'){
+        document.getElementById('popup').style.height = "470px"
+        document.getElementById('fullBreakdownData').style.height = 'auto'
+      }else{
+        document.getElementById('popup').style.height = "430px"
+        document.getElementById('fullBreakdownData').style.height = 'auto'
+      }
     }else{
       document.getElementById('fullBreakdownData').style.visibility = 'hidden' 
-      document.getElementById('popup').style.height = "350px" 
-      document.getElementById('fullBreakdownData').style.height = '0px'
-      if(document.getElementById('popup').style.height != "350px"){
-        document.getElementById('joinCommunity').style.height = "auto"
-        document.getElementById('joinCommunity').style.visibility = "visible"
+      if(document.getElementById('custom').style.borderBottom == '3px solid rgb(48, 105, 75)'){
+        document.getElementById('popup').style.height = "380px" 
+        document.getElementById('fullBreakdownData').style.height = '0px'
+      }else{
+        document.getElementById('popup').style.height = "350px" 
+        document.getElementById('fullBreakdownData').style.height = '0px'
       }
     } 
 })
@@ -515,21 +528,16 @@ document.getElementById('home').addEventListener("click", function(){
     document.getElementById('heartPage').style.height = '0px'
     if(document.getElementById('custom').style.borderBottom == '3px solid rgb(48, 105, 75)') {
         document.getElementById('customQuality').style.visibility = "visible"
+        document.getElementById('popup').style.height = "390px"
     }else{
         document.getElementById('customQuality').style.visibility = "hidden"
+        document.getElementById('popup').style.height = "350px"
     }
     document.getElementById('fullBreakdownData').style.visibility = 'hidden'
-    document.getElementById('mission').style.visibility = "hidden"
-    document.getElementById('mission').style.height = "0px"
-    document.getElementById('mission').style.marginBottom = "0px"
-    document.getElementById('joinCommunity').style.visibility = "hidden"
-    document.getElementById('joinCommunity').style.height = "0px"
-    document.getElementById('joinCommunity').style.marginTop = "0px"
+    document.getElementById('fullBreakdownData').style.height = "0px"
 })
 
 document.getElementById('usage').addEventListener("click", function(){
-    document.getElementById('mission').style.visibility = "hidden"
-    document.getElementById('mission').style.height = "0px"
     document.getElementById('usage').style.borderBottom = "3px solid #f8f8ff"
     document.getElementById('home').style.borderBottom = "none"
     document.getElementById('information').style.borderBottom = "none"
@@ -543,12 +551,8 @@ document.getElementById('usage').addEventListener("click", function(){
     document.getElementById('heartPage').style.height = '0px'
     document.getElementById('customQuality').style.visibility = 'hidden'
     document.getElementById('fullBreakdownData').style.visibility = 'hidden'
-    document.getElementById('mission').style.visibility = "hidden"
-    document.getElementById('mission').style.height = "0px"
-    document.getElementById('mission').style.marginBottom = "0px"
-    document.getElementById('joinCommunity').style.visibility = "hidden"
-    document.getElementById('joinCommunity').style.height = "0px"
-    document.getElementById('joinCommunity').style.marginTop = "0px"
+    document.getElementById('fullBreakdownData').style.height = "0px"
+    document.getElementById('popup').style.height = "350px"
 })
 
 document.getElementById('information').addEventListener("click", function(){
@@ -565,12 +569,8 @@ document.getElementById('information').addEventListener("click", function(){
     document.getElementById('heartPage').style.height = '0px'
     document.getElementById('customQuality').style.visibility = 'hidden'
     document.getElementById('fullBreakdownData').style.visibility = 'hidden'
-    document.getElementById('mission').style.visibility = "hidden"
-    document.getElementById('mission').style.height = "0px"
-    document.getElementById('mission').style.marginBottom = "0px"
-    document.getElementById('joinCommunity').style.visibility = "hidden"
-    document.getElementById('joinCommunity').style.height = "0px"
-    document.getElementById('joinCommunity').style.marginTop = "0px"
+    document.getElementById('fullBreakdownData').style.height = "0px"
+    document.getElementById('popup').style.height = "350px"
 })
 
 document.getElementById('heart').addEventListener("click", function(){
@@ -588,12 +588,8 @@ document.getElementById('heart').addEventListener("click", function(){
     document.getElementById('homePage').style.height = '0px'
     document.getElementById('customQuality').style.visibility = 'hidden'
     document.getElementById('fullBreakdownData').style.visibility = 'hidden'
-    document.getElementById('mission').style.visibility = "hidden"
-    document.getElementById('mission').style.height = "0px"
-    document.getElementById('mission').style.marginBottom = "0px"
-    document.getElementById('joinCommunity').style.visibility = "hidden"
-    document.getElementById('joinCommunity').style.height = "0px"
-    document.getElementById('joinCommunity').style.marginTop = "0px"
+    document.getElementById('fullBreakdownData').style.height = "0px"
+    document.getElementById('popup').style.height = "350px"
 })
 
 // Calculations for equivalences

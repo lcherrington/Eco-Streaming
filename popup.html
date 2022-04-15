@@ -1,25 +1,17 @@
 <!doctype html>
-<head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet"> 
-  <script src="https://kit.fontawesome.com/8dce6f872c.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script> 
-</head>
-<body>
+<html style="overflow: hidden;">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet"> 
+    <link href="/Icons/css/all.css" rel="stylesheet">
+  </head>
+<body style="overflow: hidden;">
   <div id="popup" style="width: 500px; height: 350px">
     <div id="homePage">
       <h1 style="text-align: center; font-family: 'Oswald', cursive;">Renewable Streaming</h1>
       <div>
-        <div id="mission" style="margin-bottom: 10px;">
-          <h3 style="font-family: 'Oswald';">Our Mission</h3>
-          <div style="display: flex; margin-top: -5px;">
-            <p style="font-family: 'Roboto Condensed'; margin-top: 2px; text-align: justify;">
-              Eco Streaming empowers users to understand the environmental impact of their online streaming activity.<br/>
-              By reducing your own carbon footprint through streaming, you can better understand the impact that video streaming services have on the environment and reduce your carbon output. We also encourage you to sign our petitions, holding companies like Amazon and Netflix responsible for reducing their own environmental impact.</p>
-          </div>
-        </div>
         <div style="display: inline;">
           <h3 style="display: inline; font-family: 'Roboto Condensed'; font-weight: 700; margin-right: 10px;">Streaming Quality:</h3>
           <div style="display: inline; justify-content: space-evenly;">
@@ -100,7 +92,7 @@
             <div style="padding-top: 5px;">
               <h3 style="display: inline; font-family: 'Roboto Condensed'">CO2 Saved Streaming in
                 <h3 id="setQualityEnergyCurrentVideo" style="display: inline; font-family: 'Roboto Condensed';color: #358856;">720p</h3>
-                <h3 id="energySavedCurrentVideo" style="display: inline; font-family: 'Roboto Condensed';color: #358856;">1000</h3>
+                <h3 id="energySavedCurrentVideo" style="display: inline; font-family: 'Roboto Condensed';color: #358856;">0</h3>
                 <h3 id="gco2Current" style="display: inline; font-family: 'Roboto Condensed';color: #358856;">kg of CO2</h3>
               </h3>
             </div>
@@ -110,9 +102,9 @@
           <h3 style="display: inline; font-family: 'Roboto Condensed'; font-weight: 700; margin-right: 5px;">This is equivalent to: </h3>
           <h3 id="equivalences" style="display: inline; font-family: 'Roboto Condensed';"></h3>
         </div>
-        <div id="cars" style="margin-top: 20px;">     
+        <div id="cars" style="margin-top: 15px;">     
         </div>
-        <div id="burgers" style="margin-top: 30px;">           
+        <div id="burgers" style="margin-top: 25px;">           
         </div>
         <div id="trees">
         </div>
@@ -150,12 +142,6 @@
             </svg> 
           </div>
         </div>
-        <div id="joinCommunity" style="margin-top: 50px;">
-          <p style="font-family: 'Roboto Condensed'; margin-top: 5px; text-align: justify;">Join our Open Source Community and help us refine and build our extension. You can find our Open Source code on our GitHub.</p>
-          <div style="text-align: center; display: flex; justify-content: center;">
-            <a style="text-decoration: none; color: #121212;" href="https://github.com/lcherrington/Eco-Streaming" target="_blank"><p style="width: 150px;font-family: 'Oswald';border-radius: 15px;padding: 5px;color: #f8f8ff;background-color: #358856;margin-top: 0px; margin-bottom: 0px;">Eco Streaming GitHub</p></a>
-          </div>
-        </div>
       </div> 
     </div>
     <div id="usagePage">
@@ -186,8 +172,8 @@
       </div>
       <div style="margin-top: -20px; display: flex;">
         <h3 style="font-family: 'Oswald', cursive;">Network Type: </h3>
-        <p id="wifi" style="padding: 5px; margin-left: 120px;">Wifi</p>
-        <p id="4g" style="padding: 5px; margin-left: 120px;">4G</p>
+        <p id="wifi" style="padding: 5px; margin-left: 120px; margin-top: 15px;">Wifi</p>
+        <p id="4g" style="padding: 5px; margin-left: 120px; margin-top: 15px;">4G</p>
       </div> 
     </div>
     <div id="informationPage">
@@ -233,5 +219,6 @@
     </div> 
   </div>
 </body>
+<script src="/Chart/dist/chart.js"></script>
 <script src="popup.js"></script>
 </html>
