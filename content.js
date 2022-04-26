@@ -8,7 +8,7 @@ var currentVideoDataSaved = 0
 var currentVideoEnergySaved = 0
 var currentVideoName = ""
 var frameRate = 60
-var totalTime = 0
+var totalTime = 60
 var emissionAddition = 0
 var emissionAdditionEnergy = 0
 
